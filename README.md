@@ -42,6 +42,24 @@ Quantis provides a robust platform for quantitative analysis, algorithmic tradin
 
 ---
 
+## Project Structure
+
+The project is organized into several main components:
+
+```
+Quantis/
+├── code/                   # Core backend logic, services, and shared utilities
+├── docs/                   # Project documentation
+├── infrastructure/         # DevOps, deployment, and infra-related code
+├── mobile-frontend/        # Mobile application
+├── web-frontend/           # Web dashboard
+├── scripts/                # Automation, setup, and utility scripts
+├── LICENSE                 # License information
+├── README.md               # Project overview and instructions
+├── eslint.config.js        # ESLint configuration
+└── package.json            # Node.js project metadata and dependencies
+```
+
 ## Key Features
 
 Quantis's functionality is divided into four main domains, each powered by dedicated services.
