@@ -14,15 +14,12 @@ Quantis is a comprehensive quantitative trading and investment analytics platfor
 
 > **Note**: This project is under active development. Features and functionalities are continuously being enhanced to improve trading capabilities and user experience.
 
-## Executive Summary
-
-Quantis is a comprehensive quantitative trading and investment analytics platform that combines **advanced statistical models, machine learning algorithms, and real-time market data** to provide powerful insights and automated trading strategies. It offers a robust framework for data processing, quantitative analysis, strategy development, and portfolio management, all built on a scalable **microservices architecture**.
-
 ---
 
 ## Table of Contents
 
 - [Overview](#overview)
+- [Project Structure](#project-structure)
 - [Key Features](#key-features)
 - [Architecture](#architecture)
 - [Technology Stack](#technology-stack)
