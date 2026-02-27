@@ -757,12 +757,12 @@ Real-time notification stream.
 
 ```javascript
 const ws = new WebSocket(
-  'ws://localhost:8000/ws/notifications?token=<jwt_token>'
+  "ws://localhost:8000/ws/notifications?token=<jwt_token>",
 );
 
 ws.onmessage = (event) => {
   const notification = JSON.parse(event.data);
-  console.log('New notification:', notification);
+  console.log("New notification:", notification);
 };
 ```
 
@@ -817,15 +817,15 @@ print(f"Found {len(models)} models")
 ### JavaScript Example
 
 ```javascript
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = "http://localhost:8000";
 
 // Login
 const loginResponse = await fetch(`${BASE_URL}/auth/login`, {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
-    username: 'john_doe',
-    password: 'MyP@ssw0rd!2025',
+    username: "john_doe",
+    password: "MyP@ssw0rd!2025",
   }),
 });
 const { access_token } = await loginResponse.json();

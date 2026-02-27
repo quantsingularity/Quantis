@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Box,
   Typography,
@@ -16,57 +16,57 @@ import {
   TableRow,
   Paper,
   Button,
-} from '@mui/material';
-import LineChart from '../components/charts/LineChart';
-import BarChart from '../components/charts/BarChart';
+} from "@mui/material";
+import LineChart from "../components/charts/LineChart";
+import BarChart from "../components/charts/BarChart";
 
 const ModelMetrics = () => {
   const theme = useTheme();
 
   // Mock data for metrics
   const metrics = [
-    { name: 'Accuracy', value: '92.7%' },
-    { name: 'Precision', value: '91.3%' },
-    { name: 'Recall', value: '89.5%' },
-    { name: 'F1 Score', value: '90.4%' },
-    { name: 'RMSE', value: '0.042' },
-    { name: 'MAE', value: '0.037' },
+    { name: "Accuracy", value: "92.7%" },
+    { name: "Precision", value: "91.3%" },
+    { name: "Recall", value: "89.5%" },
+    { name: "F1 Score", value: "90.4%" },
+    { name: "RMSE", value: "0.042" },
+    { name: "MAE", value: "0.037" },
   ];
 
   // Mock data for feature importance
   const featureImportance = [
-    { feature: 'Feature 1', value: 0.85 },
-    { feature: 'Feature 2', value: 0.72 },
-    { feature: 'Feature 3', value: 0.68 },
-    { feature: 'Feature 4', value: 0.56 },
-    { feature: 'Feature 5', value: 0.43 },
+    { feature: "Feature 1", value: 0.85 },
+    { feature: "Feature 2", value: 0.72 },
+    { feature: "Feature 3", value: 0.68 },
+    { feature: "Feature 4", value: 0.56 },
+    { feature: "Feature 5", value: 0.43 },
   ];
 
   // Mock data for model versions
   const modelVersions = [
     {
-      version: '2.1.0',
-      date: '2025-04-01',
-      accuracy: '92.7%',
-      status: 'Active',
+      version: "2.1.0",
+      date: "2025-04-01",
+      accuracy: "92.7%",
+      status: "Active",
     },
     {
-      version: '2.0.1',
-      date: '2025-03-15',
-      accuracy: '91.2%',
-      status: 'Archived',
+      version: "2.0.1",
+      date: "2025-03-15",
+      accuracy: "91.2%",
+      status: "Archived",
     },
     {
-      version: '2.0.0',
-      date: '2025-02-28',
-      accuracy: '90.5%',
-      status: 'Archived',
+      version: "2.0.0",
+      date: "2025-02-28",
+      accuracy: "90.5%",
+      status: "Archived",
     },
     {
-      version: '1.9.0',
-      date: '2025-01-10',
-      accuracy: '88.3%',
-      status: 'Archived',
+      version: "1.9.0",
+      date: "2025-01-10",
+      accuracy: "88.3%",
+      status: "Archived",
     },
   ];
 
@@ -173,16 +173,16 @@ const ModelMetrics = () => {
                         <TableCell>
                           <Box
                             sx={{
-                              display: 'inline-block',
+                              display: "inline-block",
                               px: 1,
                               py: 0.5,
                               borderRadius: 1,
                               backgroundColor:
-                                version.status === 'Active'
-                                  ? theme.palette.success.main + '20'
-                                  : theme.palette.text.secondary + '20',
+                                version.status === "Active"
+                                  ? theme.palette.success.main + "20"
+                                  : theme.palette.text.secondary + "20",
                               color:
-                                version.status === 'Active'
+                                version.status === "Active"
                                   ? theme.palette.success.main
                                   : theme.palette.text.secondary,
                             }}

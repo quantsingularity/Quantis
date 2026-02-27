@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Box,
   Card,
@@ -6,9 +6,9 @@ import {
   Typography,
   Avatar,
   useTheme,
-} from '@mui/material';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import TrendingDownIcon from '@mui/icons-material/TrendingDown';
+} from "@mui/material";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 
 const StatCard = ({ title, value, change, positive, icon, color }) => {
   const theme = useTheme();
@@ -16,22 +16,22 @@ const StatCard = ({ title, value, change, positive, icon, color }) => {
   return (
     <Card
       sx={{
-        height: '100%',
-        transition: 'transform 0.3s, box-shadow 0.3s',
-        '&:hover': {
-          transform: 'translateY(-4px)',
+        height: "100%",
+        transition: "transform 0.3s, box-shadow 0.3s",
+        "&:hover": {
+          transform: "translateY(-4px)",
           boxShadow: theme.shadows[6],
         },
       }}
     >
       <CardContent>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
           <Typography variant="h6" color="text.secondary" fontWeight="500">
             {title}
           </Typography>
           <Avatar
             sx={{
-              bgcolor: color + '20',
+              bgcolor: color + "20",
               color: color,
               width: 40,
               height: 40,
@@ -50,7 +50,7 @@ const StatCard = ({ title, value, change, positive, icon, color }) => {
           {value}
         </Typography>
 
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
           {positive ? (
             <TrendingUpIcon fontSize="small" color="success" />
           ) : (

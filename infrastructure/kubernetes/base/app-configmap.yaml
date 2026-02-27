@@ -5,9 +5,9 @@ metadata:
 data:
   API_URL: http://app-backend
   REDIS_HOST: quantis-redis
-  REDIS_PORT: '6379'
+  REDIS_PORT: "6379"
   DATABASE_HOST: quantis-database
-  DATABASE_PORT: '3306'
+  DATABASE_PORT: "3306"
   DATABASE_NAME: quantisdb
   DATABASE_USER: appuser
   LOG_LEVEL: debug

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Typography, useTheme } from '@mui/material';
+import React from "react";
+import { Box, Typography, useTheme } from "@mui/material";
 import {
   BarChart as RechartsBarChart,
   Bar,
@@ -9,14 +9,14 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-} from 'recharts';
+} from "recharts";
 
 const BarChart = ({
   data,
   title,
   height = 300,
-  dataKey = 'value',
-  nameKey = 'name',
+  dataKey = "value",
+  nameKey = "name",
 }) => {
   const theme = useTheme();
 
@@ -44,9 +44,9 @@ const BarChart = ({
       <Box
         sx={{
           height,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
           backgroundColor: theme.palette.background.default,
           borderRadius: 1,
         }}
@@ -59,7 +59,7 @@ const BarChart = ({
   }
 
   return (
-    <Box sx={{ width: '100%', height }}>
+    <Box sx={{ width: "100%", height }}>
       {title && (
         <Typography variant="h6" gutterBottom>
           {title}
@@ -93,7 +93,7 @@ const BarChart = ({
               color: theme.palette.text.primary,
             }}
             formatter={(value, name) => [
-              typeof value === 'number' ? value.toFixed(3) : value,
+              typeof value === "number" ? value.toFixed(3) : value,
               name,
             ]}
           />

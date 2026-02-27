@@ -639,14 +639,14 @@ CORS_ORIGINS=["*"]
 
 ```javascript
 // Ensure correct protocol
-const ws = new WebSocket('ws://localhost:8000/ws/notifications');
+const ws = new WebSocket("ws://localhost:8000/ws/notifications");
 
 // Include auth token
-const token = 'your-jwt-token';
+const token = "your-jwt-token";
 const ws = new WebSocket(`ws://localhost:8000/ws/notifications?token=${token}`);
 
 // Handle errors
-ws.onerror = (error) => console.error('WebSocket error:', error);
+ws.onerror = (error) => console.error("WebSocket error:", error);
 ```
 
 ---

@@ -477,14 +477,14 @@ global:
   evaluation_interval: 15s
 
 scrape_configs:
-  - job_name: 'quantis-api'
+  - job_name: "quantis-api"
     static_configs:
-      - targets: ['localhost:8000']
-    metrics_path: '/metrics'
+      - targets: ["localhost:8000"]
+    metrics_path: "/metrics"
 
-  - job_name: 'node-exporter'
+  - job_name: "node-exporter"
     static_configs:
-      - targets: ['localhost:9100']
+      - targets: ["localhost:9100"]
 ```
 
 ### Grafana Configuration
@@ -547,7 +547,7 @@ npm run build
 Edit `infrastructure/docker-compose.yml`:
 
 ```yaml
-version: '3.8'
+version: "3.8"
 
 services:
   api:
@@ -556,13 +556,13 @@ services:
       - DATABASE_URL=postgresql://user:pass@db:5432/quantis
       - REDIS_URL=redis://redis:6379/0
     ports:
-      - '8000:8000'
+      - "8000:8000"
 
   frontend:
     environment:
       - REACT_APP_API_BASE_URL=http://localhost:8000
     ports:
-      - '80:80'
+      - "80:80"
 
   db:
     environment:
@@ -594,10 +594,10 @@ metadata:
   name: quantis-config
   namespace: quantis
 data:
-  APP_NAME: 'Quantis API'
-  ENVIRONMENT: 'production'
-  LOG_LEVEL: 'INFO'
-  REDIS_URL: 'redis://redis-service:6379/0'
+  APP_NAME: "Quantis API"
+  ENVIRONMENT: "production"
+  LOG_LEVEL: "INFO"
+  REDIS_URL: "redis://redis-service:6379/0"
 ```
 
 ### Secrets

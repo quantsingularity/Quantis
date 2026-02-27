@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Box,
   Typography,
@@ -16,8 +16,8 @@ import {
   Slider,
   Alert,
   useTheme,
-} from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
+} from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 
 const Predictions = () => {
   const theme = useTheme();
@@ -25,8 +25,8 @@ const Predictions = () => {
     feature1: 0.5,
     feature2: 0.3,
     feature3: 0.7,
-    category1: 'option1',
-    category2: 'option2',
+    category1: "option1",
+    category2: "option2",
   });
   const [prediction, setPrediction] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -89,15 +89,15 @@ const Predictions = () => {
                   <Slider
                     name="feature1"
                     value={formData.feature1}
-                    onChange={handleSliderChange('feature1')}
+                    onChange={handleSliderChange("feature1")}
                     aria-labelledby="feature1-label"
                     step={0.01}
                     min={0}
                     max={1}
                     marks={[
-                      { value: 0, label: '0' },
-                      { value: 0.5, label: '0.5' },
-                      { value: 1, label: '1' },
+                      { value: 0, label: "0" },
+                      { value: 0.5, label: "0.5" },
+                      { value: 1, label: "1" },
                     ]}
                   />
                 </Box>
@@ -109,15 +109,15 @@ const Predictions = () => {
                   <Slider
                     name="feature2"
                     value={formData.feature2}
-                    onChange={handleSliderChange('feature2')}
+                    onChange={handleSliderChange("feature2")}
                     aria-labelledby="feature2-label"
                     step={0.01}
                     min={0}
                     max={1}
                     marks={[
-                      { value: 0, label: '0' },
-                      { value: 0.5, label: '0.5' },
-                      { value: 1, label: '1' },
+                      { value: 0, label: "0" },
+                      { value: 0.5, label: "0.5" },
+                      { value: 1, label: "1" },
                     ]}
                   />
                 </Box>
@@ -129,15 +129,15 @@ const Predictions = () => {
                   <Slider
                     name="feature3"
                     value={formData.feature3}
-                    onChange={handleSliderChange('feature3')}
+                    onChange={handleSliderChange("feature3")}
                     aria-labelledby="feature3-label"
                     step={0.01}
                     min={0}
                     max={1}
                     marks={[
-                      { value: 0, label: '0' },
-                      { value: 0.5, label: '0.5' },
-                      { value: 1, label: '1' },
+                      { value: 0, label: "0" },
+                      { value: 0.5, label: "0.5" },
+                      { value: 1, label: "1" },
                     ]}
                   />
                 </Box>
@@ -188,7 +188,7 @@ const Predictions = () => {
                   endIcon={<SendIcon />}
                   sx={{ mt: 2 }}
                 >
-                  {loading ? 'Processing...' : 'Generate Prediction'}
+                  {loading ? "Processing..." : "Generate Prediction"}
                 </Button>
               </Box>
             </CardContent>
@@ -196,7 +196,7 @@ const Predictions = () => {
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <Card sx={{ height: '100%' }}>
+          <Card sx={{ height: "100%" }}>
             <CardHeader
               title="Prediction Results"
               subheader="Model output based on input features"
@@ -215,15 +215,15 @@ const Predictions = () => {
 
                   <Box
                     sx={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
+                      display: "flex",
+                      justifyContent: "space-between",
                       mb: 3,
                       p: 2,
                       bgcolor: theme.palette.background.default,
                       borderRadius: 1,
                     }}
                   >
-                    <Box sx={{ textAlign: 'center' }}>
+                    <Box sx={{ textAlign: "center" }}>
                       <Typography
                         variant="h4"
                         color="primary"
@@ -236,7 +236,7 @@ const Predictions = () => {
                       </Typography>
                     </Box>
 
-                    <Box sx={{ textAlign: 'center' }}>
+                    <Box sx={{ textAlign: "center" }}>
                       <Typography variant="h4" fontWeight="bold">
                         {(prediction.value[1] * 100).toFixed(1)}%
                       </Typography>
@@ -245,7 +245,7 @@ const Predictions = () => {
                       </Typography>
                     </Box>
 
-                    <Box sx={{ textAlign: 'center' }}>
+                    <Box sx={{ textAlign: "center" }}>
                       <Typography variant="h4" fontWeight="bold">
                         {(prediction.value[2] * 100).toFixed(1)}%
                       </Typography>
@@ -256,7 +256,7 @@ const Predictions = () => {
                   </Box>
 
                   <Typography variant="subtitle1" gutterBottom>
-                    Confidence:{' '}
+                    Confidence:{" "}
                     <strong>{(prediction.confidence * 100).toFixed(1)}%</strong>
                   </Typography>
 
@@ -275,11 +275,11 @@ const Predictions = () => {
               ) : (
                 <Box
                   sx={{
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
                     py: 8,
                   }}
                 >

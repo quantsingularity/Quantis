@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Box,
   Grid,
@@ -10,14 +10,14 @@ import {
   Divider,
   Button,
   useTheme,
-} from '@mui/material';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import TrendingDownIcon from '@mui/icons-material/TrendingDown';
-import TimelineIcon from '@mui/icons-material/Timeline';
-import AssessmentIcon from '@mui/icons-material/Assessment';
-import StatCard from '../components/StatCard';
-import LineChart from '../components/charts/LineChart';
-import BarChart from '../components/charts/BarChart';
+} from "@mui/material";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import TrendingDownIcon from "@mui/icons-material/TrendingDown";
+import TimelineIcon from "@mui/icons-material/Timeline";
+import AssessmentIcon from "@mui/icons-material/Assessment";
+import StatCard from "../components/StatCard";
+import LineChart from "../components/charts/LineChart";
+import BarChart from "../components/charts/BarChart";
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -25,39 +25,39 @@ const Dashboard = () => {
   // Mock data for charts
   const lineChartData = [
     {
-      id: 'Predictions',
+      id: "Predictions",
       color: theme.palette.primary.main,
       data: [
-        { x: 'Jan', y: 45 },
-        { x: 'Feb', y: 52 },
-        { x: 'Mar', y: 48 },
-        { x: 'Apr', y: 61 },
-        { x: 'May', y: 55 },
-        { x: 'Jun', y: 67 },
-        { x: 'Jul', y: 71 },
+        { x: "Jan", y: 45 },
+        { x: "Feb", y: 52 },
+        { x: "Mar", y: 48 },
+        { x: "Apr", y: 61 },
+        { x: "May", y: 55 },
+        { x: "Jun", y: 67 },
+        { x: "Jul", y: 71 },
       ],
     },
     {
-      id: 'Actual',
+      id: "Actual",
       color: theme.palette.secondary.main,
       data: [
-        { x: 'Jan', y: 42 },
-        { x: 'Feb', y: 49 },
-        { x: 'Mar', y: 51 },
-        { x: 'Apr', y: 58 },
-        { x: 'May', y: 53 },
-        { x: 'Jun', y: 65 },
-        { x: 'Jul', y: 68 },
+        { x: "Jan", y: 42 },
+        { x: "Feb", y: 49 },
+        { x: "Mar", y: 51 },
+        { x: "Apr", y: 58 },
+        { x: "May", y: 53 },
+        { x: "Jun", y: 65 },
+        { x: "Jul", y: 68 },
       ],
     },
   ];
 
   const barChartData = [
-    { feature: 'Feature 1', value: 0.85 },
-    { feature: 'Feature 2', value: 0.72 },
-    { feature: 'Feature 3', value: 0.68 },
-    { feature: 'Feature 4', value: 0.56 },
-    { feature: 'Feature 5', value: 0.43 },
+    { feature: "Feature 1", value: 0.85 },
+    { feature: "Feature 2", value: 0.72 },
+    { feature: "Feature 3", value: 0.68 },
+    { feature: "Feature 4", value: 0.56 },
+    { feature: "Feature 5", value: 0.43 },
   ];
 
   return (
@@ -158,7 +158,7 @@ const Dashboard = () => {
               <Typography
                 variant="body2"
                 color="text.secondary"
-                sx={{ py: 5, textAlign: 'center' }}
+                sx={{ py: 5, textAlign: "center" }}
               >
                 Recent prediction data will appear here when available
               </Typography>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Box,
   Typography,
@@ -14,22 +14,22 @@ import {
   Alert,
   Snackbar,
   useTheme,
-} from '@mui/material';
-import SaveIcon from '@mui/icons-material/Save';
+} from "@mui/material";
+import SaveIcon from "@mui/icons-material/Save";
 
 const Settings = () => {
   const theme = useTheme();
   const [formData, setFormData] = useState({
-    apiKey: 'sk_test_***********************',
-    apiEndpoint: 'https://api.quantis.ai/v2',
+    apiKey: "sk_test_***********************",
+    apiEndpoint: "https://api.quantis.ai/v2",
     enableNotifications: true,
     enableAutoUpdates: true,
     dataRefreshInterval: 5,
   });
   const [snackbar, setSnackbar] = useState({
     open: false,
-    message: '',
-    severity: 'success',
+    message: "",
+    severity: "success",
   });
 
   const handleChange = (e) => {
@@ -53,8 +53,8 @@ const Settings = () => {
     // Simulate saving settings
     setSnackbar({
       open: true,
-      message: 'Settings saved successfully!',
-      severity: 'success',
+      message: "Settings saved successfully!",
+      severity: "success",
     });
   };
 
@@ -247,7 +247,7 @@ const Settings = () => {
 
               <Divider sx={{ my: 2 }} />
 
-              <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
+              <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
                 <Button variant="outlined">Manage Subscription</Button>
                 <Button variant="outlined" color="error">
                   Reset API Key
@@ -262,12 +262,12 @@ const Settings = () => {
         open={snackbar.open}
         autoHideDuration={6000}
         onClose={handleCloseSnackbar}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
       >
         <Alert
           onClose={handleCloseSnackbar}
           severity={snackbar.severity}
-          sx={{ width: '100%' }}
+          sx={{ width: "100%" }}
         >
           {snackbar.message}
         </Alert>

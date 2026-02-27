@@ -334,13 +334,13 @@ print(f"Prediction: {result['prediction_result']}")
 ### JavaScript/TypeScript Example
 
 ```typescript
-import axios from 'axios';
+import axios from "axios";
 
 class QuantisAPI {
   private baseURL: string;
   private token: string | null = null;
 
-  constructor(baseURL: string = 'http://localhost:8000') {
+  constructor(baseURL: string = "http://localhost:8000") {
     this.baseURL = baseURL;
   }
 
@@ -356,7 +356,7 @@ class QuantisAPI {
   private getHeaders() {
     return {
       Authorization: `Bearer ${this.token}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     };
   }
 
@@ -371,7 +371,7 @@ class QuantisAPI {
     const response = await axios.post(
       `${this.baseURL}/predict`,
       { model_id: modelId, input_data: inputData },
-      { headers: this.getHeaders() }
+      { headers: this.getHeaders() },
     );
     return response.data;
   }
@@ -379,10 +379,10 @@ class QuantisAPI {
 
 // Usage
 const api = new QuantisAPI();
-await api.login('john_doe', 'MyP@ssw0rd!2025');
+await api.login("john_doe", "MyP@ssw0rd!2025");
 const models = await api.getModels();
 const prediction = await api.predict(1, [0.1, 0.2, 0.3]);
-console.log('Prediction:', prediction);
+console.log("Prediction:", prediction);
 ```
 
 ### cURL Examples

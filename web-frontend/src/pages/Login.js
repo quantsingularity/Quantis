@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import {
   Box,
   Card,
@@ -12,41 +12,41 @@ import {
   Divider,
   Container,
   useTheme,
-} from '@mui/material';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import { useAuth } from '../context/AuthContext';
+} from "@mui/material";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { useAuth } from "../context/AuthContext";
 
 const validationSchema = Yup.object({
   email: Yup.string()
-    .email('Invalid email address')
-    .required('Email is required'),
+    .email("Invalid email address")
+    .required("Email is required"),
   password: Yup.string()
-    .min(6, 'Password must be at least 6 characters')
-    .required('Password is required'),
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
 });
 
 const Login = () => {
   const theme = useTheme();
   const navigate = useNavigate();
   const { login } = useAuth();
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
     validationSchema,
     onSubmit: async (values) => {
       setIsLoading(true);
-      setError('');
+      setError("");
 
       const result = await login(values);
 
       if (result.success) {
-        navigate('/');
+        navigate("/");
       } else {
         setError(result.error);
       }
@@ -59,16 +59,16 @@ const Login = () => {
     <Container maxWidth="sm">
       <Box
         sx={{
-          minHeight: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
           py: 4,
         }}
       >
-        <Card sx={{ width: '100%', maxWidth: 400 }}>
+        <Card sx={{ width: "100%", maxWidth: 400 }}>
           <CardContent sx={{ p: 4 }}>
-            <Box sx={{ textAlign: 'center', mb: 4 }}>
+            <Box sx={{ textAlign: "center", mb: 4 }}>
               <Typography
                 variant="h4"
                 component="h1"
@@ -132,7 +132,7 @@ const Login = () => {
                 {isLoading ? (
                   <CircularProgress size={24} color="inherit" />
                 ) : (
-                  'Sign In'
+                  "Sign In"
                 )}
               </Button>
 
@@ -142,14 +142,14 @@ const Login = () => {
                 </Typography>
               </Divider>
 
-              <Box sx={{ textAlign: 'center' }}>
+              <Box sx={{ textAlign: "center" }}>
                 <Typography variant="body2" color="text.secondary">
-                  Don't have an account?{' '}
+                  Don't have an account?{" "}
                   <Link
                     to="/register"
                     style={{
                       color: theme.palette.primary.main,
-                      textDecoration: 'none',
+                      textDecoration: "none",
                       fontWeight: 500,
                     }}
                   >
@@ -158,13 +158,13 @@ const Login = () => {
                 </Typography>
               </Box>
 
-              <Box sx={{ textAlign: 'center', mt: 2 }}>
+              <Box sx={{ textAlign: "center", mt: 2 }}>
                 <Link
                   to="/forgot-password"
                   style={{
                     color: theme.palette.text.secondary,
-                    textDecoration: 'none',
-                    fontSize: '0.875rem',
+                    textDecoration: "none",
+                    fontSize: "0.875rem",
                   }}
                 >
                   Forgot your password?

@@ -1,11 +1,11 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from "react";
 import {
   authAPI,
   setAuthToken,
   setApiKey,
   clearAuth,
   isAuthenticated,
-} from '../services/api';
+} from "../services/api";
 
 const AuthContext = createContext({
   user: null,
@@ -19,7 +19,7 @@ const AuthContext = createContext({
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 };
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
           const userData = await authAPI.getCurrentUser();
           setUser(userData.data);
         } catch (error) {
-          console.error('Failed to get current user:', error);
+          console.error("Failed to get current user:", error);
           clearAuth();
         }
       }
@@ -57,14 +57,14 @@ export const AuthProvider = ({ children }) => {
       }
 
       setUser(response.data.user);
-      localStorage.setItem('user', JSON.stringify(response.data.user));
+      localStorage.setItem("user", JSON.stringify(response.data.user));
 
       return { success: true, data: response.data };
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error("Login failed:", error);
       return {
         success: false,
-        error: error.response?.data?.message || 'Login failed',
+        error: error.response?.data?.message || "Login failed",
       };
     }
   };
@@ -80,14 +80,14 @@ export const AuthProvider = ({ children }) => {
       }
 
       setUser(response.data.user);
-      localStorage.setItem('user', JSON.stringify(response.data.user));
+      localStorage.setItem("user", JSON.stringify(response.data.user));
 
       return { success: true, data: response.data };
     } catch (error) {
-      console.error('Registration failed:', error);
+      console.error("Registration failed:", error);
       return {
         success: false,
-        error: error.response?.data?.message || 'Registration failed',
+        error: error.response?.data?.message || "Registration failed",
       };
     }
   };
@@ -96,7 +96,7 @@ export const AuthProvider = ({ children }) => {
     try {
       await authAPI.logout();
     } catch (error) {
-      console.error('Logout error:', error);
+      console.error("Logout error:", error);
     } finally {
       clearAuth();
       setUser(null);

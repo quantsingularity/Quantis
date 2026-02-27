@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Card,
@@ -25,7 +25,7 @@ import {
   DialogContent,
   DialogActions,
   useTheme,
-} from '@mui/material';
+} from "@mui/material";
 import {
   Delete,
   Visibility,
@@ -33,9 +33,9 @@ import {
   Storage as StorageIcon,
   Search,
   InsertChart,
-} from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
-import { datasetsAPI, handleApiError } from '../services/api';
+} from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import { datasetsAPI, handleApiError } from "../services/api";
 
 const Datasets = () => {
   const theme = useTheme();
@@ -43,7 +43,7 @@ const Datasets = () => {
   const [datasets, setDatasets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [previewDialog, setPreviewDialog] = useState({
     open: false,
     dataset: null,
@@ -68,11 +68,11 @@ const Datasets = () => {
   };
 
   const handleDeleteDataset = async (datasetId) => {
-    if (window.confirm('Are you sure you want to delete this dataset?')) {
+    if (window.confirm("Are you sure you want to delete this dataset?")) {
       try {
         await datasetsAPI.deleteDataset(datasetId);
         setDatasets((prev) =>
-          prev.filter((dataset) => dataset.id !== datasetId)
+          prev.filter((dataset) => dataset.id !== datasetId),
         );
       } catch (error) {
         const apiError = handleApiError(error);
@@ -104,22 +104,22 @@ const Datasets = () => {
   };
 
   const formatFileSize = (bytes) => {
-    if (!bytes) return 'N/A';
+    if (!bytes) return "N/A";
     const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const sizes = ["Bytes", "KB", "MB", "GB"];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
   };
 
   const filteredDatasets = datasets.filter(
     (dataset) =>
       dataset.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      dataset.description?.toLowerCase().includes(searchTerm.toLowerCase())
+      dataset.description?.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   if (loading) {
     return (
-      <Box sx={{ display: 'flex', justifyContent: 'center', p: 4 }}>
+      <Box sx={{ display: "flex", justifyContent: "center", p: 4 }}>
         <CircularProgress />
       </Box>
     );
@@ -129,9 +129,9 @@ const Datasets = () => {
     <Box className="fade-in">
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
           mb: 3,
         }}
       >
@@ -146,7 +146,7 @@ const Datasets = () => {
         <Button
           variant="contained"
           startIcon={<CloudUpload />}
-          onClick={() => navigate('/dataset-upload')}
+          onClick={() => navigate("/dataset-upload")}
         >
           Upload Dataset
         </Button>
@@ -181,12 +181,12 @@ const Datasets = () => {
           <Grid item xs={12} md={6} lg={4} key={dataset.id}>
             <Card
               sx={{
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                transition: 'transform 0.2s, box-shadow 0.2s',
-                '&:hover': {
-                  transform: 'translateY(-4px)',
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                transition: "transform 0.2s, box-shadow 0.2s",
+                "&:hover": {
+                  transform: "translateY(-4px)",
                   boxShadow: theme.shadows[8],
                 },
               }}
@@ -194,9 +194,9 @@ const Datasets = () => {
               <CardContent sx={{ flexGrow: 1 }}>
                 <Box
                   sx={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'flex-start',
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "flex-start",
                     mb: 2,
                   }}
                 >
@@ -209,7 +209,7 @@ const Datasets = () => {
                       {dataset.name}
                     </Typography>
                     <Chip
-                      label={dataset.format || 'CSV'}
+                      label={dataset.format || "CSV"}
                       size="small"
                       color="primary"
                       variant="outlined"
@@ -225,13 +225,13 @@ const Datasets = () => {
                   color="text.secondary"
                   sx={{
                     mb: 2,
-                    display: '-webkit-box',
+                    display: "-webkit-box",
                     WebkitLineClamp: 2,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden',
+                    WebkitBoxOrient: "vertical",
+                    overflow: "hidden",
                   }}
                 >
-                  {dataset.description || 'No description available'}
+                  {dataset.description || "No description available"}
                 </Typography>
 
                 <Paper
@@ -247,7 +247,7 @@ const Datasets = () => {
                         Rows
                       </Typography>
                       <Typography variant="body2" fontWeight="500">
-                        {dataset.row_count?.toLocaleString() || 'N/A'}
+                        {dataset.row_count?.toLocaleString() || "N/A"}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -257,7 +257,7 @@ const Datasets = () => {
                       <Typography variant="body2" fontWeight="500">
                         {dataset.columns?.length ||
                           dataset.column_count ||
-                          'N/A'}
+                          "N/A"}
                       </Typography>
                     </Grid>
                     <Grid item xs={12}>
@@ -281,7 +281,7 @@ const Datasets = () => {
                 </Typography>
 
                 <Box
-                  sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end' }}
+                  sx={{ display: "flex", gap: 1, justifyContent: "flex-end" }}
                 >
                   <Tooltip title="View Preview">
                     <IconButton
@@ -308,7 +308,7 @@ const Datasets = () => {
 
         {filteredDatasets.length === 0 && (
           <Grid item xs={12}>
-            <Paper sx={{ p: 6, textAlign: 'center' }}>
+            <Paper sx={{ p: 6, textAlign: "center" }}>
               <InsertChart
                 sx={{
                   fontSize: 80,
@@ -317,18 +317,18 @@ const Datasets = () => {
                 }}
               />
               <Typography variant="h5" gutterBottom>
-                {searchTerm ? 'No Datasets Found' : 'No Datasets Yet'}
+                {searchTerm ? "No Datasets Found" : "No Datasets Yet"}
               </Typography>
               <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
                 {searchTerm
-                  ? 'Try adjusting your search criteria'
-                  : 'Upload your first dataset to get started with ML models'}
+                  ? "Try adjusting your search criteria"
+                  : "Upload your first dataset to get started with ML models"}
               </Typography>
               {!searchTerm && (
                 <Button
                   variant="contained"
                   startIcon={<CloudUpload />}
-                  onClick={() => navigate('/dataset-upload')}
+                  onClick={() => navigate("/dataset-upload")}
                 >
                   Upload Dataset
                 </Button>
@@ -367,7 +367,7 @@ const Datasets = () => {
                     <TableRow key={index}>
                       {previewDialog.preview.columns.map((column) => (
                         <TableCell key={column}>
-                          {row[column]?.toString() || ''}
+                          {row[column]?.toString() || ""}
                         </TableCell>
                       ))}
                     </TableRow>

@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 import {
   ThemeProvider as MuiThemeProvider,
   createTheme,
-} from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { useContext, createContext, useState, useMemo } from 'react';
+} from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { useContext, createContext, useState, useMemo } from "react";
 
 // Create a context for the theme
 const ThemeContext = createContext({
   toggleColorMode: () => {},
-  mode: 'light',
+  mode: "light",
 });
 
 // Custom hook to use the theme context
@@ -17,11 +17,11 @@ export const useTheme = () => useContext(ThemeContext);
 
 // Theme provider component
 export const ThemeProvider = ({ children }) => {
-  const [mode, setMode] = useState('light');
+  const [mode, setMode] = useState("light");
 
   // Toggle between light and dark mode
   const toggleColorMode = () => {
-    setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+    setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
   };
 
   // Create the theme based on the current mode
@@ -31,30 +31,30 @@ export const ThemeProvider = ({ children }) => {
         palette: {
           mode,
           primary: {
-            main: '#1a73e8',
-            light: '#4285f4',
-            dark: '#0d47a1',
+            main: "#1a73e8",
+            light: "#4285f4",
+            dark: "#0d47a1",
           },
           secondary: {
-            main: '#34a853',
-            light: '#66bb6a',
-            dark: '#2e7d32',
+            main: "#34a853",
+            light: "#66bb6a",
+            dark: "#2e7d32",
           },
           error: {
-            main: '#ea4335',
+            main: "#ea4335",
           },
           warning: {
-            main: '#fbbc04',
+            main: "#fbbc04",
           },
           info: {
-            main: '#4285f4',
+            main: "#4285f4",
           },
           success: {
-            main: '#34a853',
+            main: "#34a853",
           },
           background: {
-            default: mode === 'light' ? '#f5f5f5' : '#121212',
-            paper: mode === 'light' ? '#ffffff' : '#1e1e1e',
+            default: mode === "light" ? "#f5f5f5" : "#121212",
+            paper: mode === "light" ? "#ffffff" : "#1e1e1e",
           },
         },
         typography: {
@@ -85,14 +85,14 @@ export const ThemeProvider = ({ children }) => {
           MuiButton: {
             styleOverrides: {
               root: {
-                textTransform: 'none',
+                textTransform: "none",
                 borderRadius: 8,
-                padding: '8px 16px',
+                padding: "8px 16px",
               },
               contained: {
-                boxShadow: 'none',
-                '&:hover': {
-                  boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+                boxShadow: "none",
+                "&:hover": {
+                  boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
                 },
               },
             },
@@ -102,9 +102,9 @@ export const ThemeProvider = ({ children }) => {
               root: {
                 borderRadius: 12,
                 boxShadow:
-                  mode === 'light'
-                    ? '0px 2px 4px rgba(0, 0, 0, 0.05), 0px 4px 6px rgba(0, 0, 0, 0.05)'
-                    : '0px 2px 4px rgba(0, 0, 0, 0.2), 0px 4px 6px rgba(0, 0, 0, 0.2)',
+                  mode === "light"
+                    ? "0px 2px 4px rgba(0, 0, 0, 0.05), 0px 4px 6px rgba(0, 0, 0, 0.05)"
+                    : "0px 2px 4px rgba(0, 0, 0, 0.2), 0px 4px 6px rgba(0, 0, 0, 0.2)",
               },
             },
           },
@@ -117,7 +117,7 @@ export const ThemeProvider = ({ children }) => {
           },
         },
       }),
-    [mode]
+    [mode],
   );
 
   // Provide the theme context to children

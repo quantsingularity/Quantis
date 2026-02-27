@@ -87,26 +87,26 @@ global:
   evaluation_interval: 15s
 
 scrape_configs:
-  - job_name: 'prometheus'
+  - job_name: "prometheus"
     static_configs:
-      - targets: ['localhost:9090']
+      - targets: ["localhost:9090"]
 
-  - job_name: 'model_metrics'
+  - job_name: "model_metrics"
     static_configs:
-      - targets: ['localhost:8000']
-    metrics_path: '/metrics'
+      - targets: ["localhost:8000"]
+    metrics_path: "/metrics"
 
-  - job_name: 'node_exporter'
+  - job_name: "node_exporter"
     static_configs:
-      - targets: ['localhost:9100']
+      - targets: ["localhost:9100"]
 
 alerting:
   alertmanagers:
     - static_configs:
-        - targets: ['localhost:9093']
+        - targets: ["localhost:9093"]
 
 rule_files:
-  - 'alert_rules.yml'
+  - "alert_rules.yml"
 ```
 
 ## Monitoring Architecture

@@ -1,5 +1,5 @@
-import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   Drawer,
   List,
@@ -12,7 +12,7 @@ import {
   Divider,
   Avatar,
   useTheme,
-} from '@mui/material';
+} from "@mui/material";
 import {
   Dashboard as DashboardIcon,
   TrendingUp,
@@ -23,8 +23,8 @@ import {
   Psychology,
   BarChart,
   Logout,
-} from '@mui/icons-material';
-import { useAuth } from '../context/AuthContext';
+} from "@mui/icons-material";
+import { useAuth } from "../context/AuthContext";
 
 const drawerWidth = 240;
 
@@ -36,40 +36,40 @@ const Sidebar = ({ open, onClose }) => {
 
   const menuItems = [
     {
-      text: 'Dashboard',
+      text: "Dashboard",
       icon: <DashboardIcon />,
-      path: '/',
-      section: 'main',
+      path: "/",
+      section: "main",
     },
     {
-      text: 'Predictions',
+      text: "Predictions",
       icon: <TrendingUp />,
-      path: '/predictions',
-      section: 'main',
+      path: "/predictions",
+      section: "main",
     },
     {
-      text: 'Models',
+      text: "Models",
       icon: <Psychology />,
-      path: '/models',
-      section: 'main',
+      path: "/models",
+      section: "main",
     },
     {
-      text: 'Model Management',
+      text: "Model Management",
       icon: <ModelTraining />,
-      path: '/model-management',
-      section: 'management',
+      path: "/model-management",
+      section: "management",
     },
     {
-      text: 'Datasets',
+      text: "Datasets",
       icon: <Storage />,
-      path: '/datasets',
-      section: 'management',
+      path: "/datasets",
+      section: "management",
     },
     {
-      text: 'Upload Dataset',
+      text: "Upload Dataset",
       icon: <CloudUpload />,
-      path: '/dataset-upload',
-      section: 'management',
+      path: "/dataset-upload",
+      section: "management",
     },
   ];
 
@@ -82,12 +82,12 @@ const Sidebar = ({ open, onClose }) => {
 
   const handleLogout = async () => {
     await logout();
-    navigate('/login');
+    navigate("/login");
   };
 
   const isSelected = (path) => {
-    if (path === '/') {
-      return location.pathname === '/' || location.pathname === '/dashboard';
+    if (path === "/") {
+      return location.pathname === "/" || location.pathname === "/dashboard";
     }
     return location.pathname === path;
   };
@@ -101,7 +101,7 @@ const Sidebar = ({ open, onClose }) => {
             px: 2,
             py: 1,
             color: theme.palette.text.secondary,
-            fontSize: '0.75rem',
+            fontSize: "0.75rem",
             fontWeight: 600,
           }}
         >
@@ -117,17 +117,17 @@ const Sidebar = ({ open, onClose }) => {
               sx={{
                 mx: 1,
                 borderRadius: 1,
-                '&.Mui-selected': {
+                "&.Mui-selected": {
                   backgroundColor: theme.palette.primary.main,
                   color: theme.palette.primary.contrastText,
-                  '&:hover': {
+                  "&:hover": {
                     backgroundColor: theme.palette.primary.dark,
                   },
-                  '& .MuiListItemIcon-root': {
+                  "& .MuiListItemIcon-root": {
                     color: theme.palette.primary.contrastText,
                   },
                 },
-                '&:hover': {
+                "&:hover": {
                   backgroundColor: theme.palette.action.hover,
                 },
               }}
@@ -144,7 +144,7 @@ const Sidebar = ({ open, onClose }) => {
               <ListItemText
                 primary={item.text}
                 primaryTypographyProps={{
-                  fontSize: '0.875rem',
+                  fontSize: "0.875rem",
                   fontWeight: isSelected(item.path) ? 600 : 400,
                 }}
               />
@@ -156,7 +156,7 @@ const Sidebar = ({ open, onClose }) => {
   );
 
   const drawerContent = (
-    <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <Box sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
       {/* Header */}
       <Box sx={{ p: 2, borderBottom: `1px solid ${theme.palette.divider}` }}>
         <Typography
@@ -164,7 +164,7 @@ const Sidebar = ({ open, onClose }) => {
           sx={{
             fontWeight: 700,
             color: theme.palette.primary.main,
-            textAlign: 'center',
+            textAlign: "center",
           }}
         >
           Quantis
@@ -174,7 +174,7 @@ const Sidebar = ({ open, onClose }) => {
       {/* User Info */}
       {user && (
         <Box sx={{ p: 2, borderBottom: `1px solid ${theme.palette.divider}` }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
             <Avatar
               sx={{
                 bgcolor: theme.palette.primary.main,
@@ -182,14 +182,14 @@ const Sidebar = ({ open, onClose }) => {
                 height: 40,
               }}
             >
-              {user.username?.charAt(0).toUpperCase() || 'U'}
+              {user.username?.charAt(0).toUpperCase() || "U"}
             </Avatar>
             <Box sx={{ flex: 1, minWidth: 0 }}>
               <Typography variant="subtitle2" sx={{ fontWeight: 600 }} noWrap>
-                {user.username || 'User'}
+                {user.username || "User"}
               </Typography>
               <Typography variant="caption" color="text.secondary" noWrap>
-                {user.email || ''}
+                {user.email || ""}
               </Typography>
             </Box>
           </Box>
@@ -197,17 +197,17 @@ const Sidebar = ({ open, onClose }) => {
       )}
 
       {/* Navigation */}
-      <Box sx={{ flex: 1, overflow: 'auto', py: 1 }}>
+      <Box sx={{ flex: 1, overflow: "auto", py: 1 }}>
         {renderMenuSection(
-          menuItems.filter((item) => item.section === 'main'),
-          null
+          menuItems.filter((item) => item.section === "main"),
+          null,
         )}
 
         <Divider sx={{ my: 1, mx: 2 }} />
 
         {renderMenuSection(
-          menuItems.filter((item) => item.section === 'management'),
-          'Management'
+          menuItems.filter((item) => item.section === "management"),
+          "Management",
         )}
       </Box>
 
@@ -220,10 +220,10 @@ const Sidebar = ({ open, onClose }) => {
               sx={{
                 mx: 1,
                 borderRadius: 1,
-                '&:hover': {
+                "&:hover": {
                   backgroundColor: theme.palette.error.light,
                   color: theme.palette.error.contrastText,
-                  '& .MuiListItemIcon-root': {
+                  "& .MuiListItemIcon-root": {
                     color: theme.palette.error.contrastText,
                   },
                 },
@@ -235,7 +235,7 @@ const Sidebar = ({ open, onClose }) => {
               <ListItemText
                 primary="Logout"
                 primaryTypographyProps={{
-                  fontSize: '0.875rem',
+                  fontSize: "0.875rem",
                 }}
               />
             </ListItemButton>
@@ -251,9 +251,9 @@ const Sidebar = ({ open, onClose }) => {
       sx={{
         width: drawerWidth,
         flexShrink: 0,
-        '& .MuiDrawer-paper': {
+        "& .MuiDrawer-paper": {
           width: drawerWidth,
-          boxSizing: 'border-box',
+          boxSizing: "border-box",
           borderRight: `1px solid ${theme.palette.divider}`,
         },
       }}

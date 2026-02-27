@@ -1,21 +1,21 @@
-import React from 'react';
+import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
-} from 'react-router-dom';
-import { AuthProvider, useAuth } from './context/AuthContext';
-import { ThemeProvider } from './context/ThemeContext';
-import Layout from './components/Layout';
-import Dashboard from './pages/Dashboard';
-import Predictions from './pages/Predictions';
-import Models from './pages/Models';
-import Datasets from './pages/Datasets';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import DatasetUpload from './pages/DatasetUpload';
-import ModelManagement from './pages/ModelManagement';
+} from "react-router-dom";
+import { AuthProvider, useAuth } from "./context/AuthContext";
+import { ThemeProvider } from "./context/ThemeContext";
+import Layout from "./components/Layout";
+import Dashboard from "./pages/Dashboard";
+import Predictions from "./pages/Predictions";
+import Models from "./pages/Models";
+import Datasets from "./pages/Datasets";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import DatasetUpload from "./pages/DatasetUpload";
+import ModelManagement from "./pages/ModelManagement";
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Typography, useTheme } from '@mui/material';
+import React from "react";
+import { Box, Typography, useTheme } from "@mui/material";
 import {
   LineChart as RechartsLineChart,
   Line,
@@ -9,7 +9,7 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-} from 'recharts';
+} from "recharts";
 
 const LineChart = ({ data, title, height = 300 }) => {
   const theme = useTheme();
@@ -45,7 +45,7 @@ const LineChart = ({ data, title, height = 300 }) => {
     if (!transformedData || transformedData.length === 0) {
       return [];
     }
-    return Object.keys(transformedData[0]).filter((key) => key !== 'x');
+    return Object.keys(transformedData[0]).filter((key) => key !== "x");
   }, [transformedData]);
 
   // Color palette
@@ -63,9 +63,9 @@ const LineChart = ({ data, title, height = 300 }) => {
       <Box
         sx={{
           height,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
           backgroundColor: theme.palette.background.default,
           borderRadius: 1,
         }}
@@ -78,7 +78,7 @@ const LineChart = ({ data, title, height = 300 }) => {
   }
 
   return (
-    <Box sx={{ width: '100%', height }}>
+    <Box sx={{ width: "100%", height }}>
       {title && (
         <Typography variant="h6" gutterBottom>
           {title}

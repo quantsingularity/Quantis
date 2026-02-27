@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   AppBar,
   Toolbar,
@@ -7,17 +7,17 @@ import {
   Box,
   useMediaQuery,
   Avatar,
-} from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import MenuIcon from '@mui/icons-material/Menu';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import SearchIcon from '@mui/icons-material/Search';
-import { useTheme as useAppTheme } from '../context/ThemeContext';
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import MenuIcon from "@mui/icons-material/Menu";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import SearchIcon from "@mui/icons-material/Search";
+import { useTheme as useAppTheme } from "../context/ThemeContext";
 
 const Header = ({ toggleSidebar, sidebarOpen }) => {
   const theme = useTheme();
   const { mode } = useAppTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <AppBar
@@ -46,7 +46,7 @@ const Header = ({ toggleSidebar, sidebarOpen }) => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: 'none', sm: 'block' }, fontWeight: 600 }}
+            sx={{ display: { xs: "none", sm: "block" }, fontWeight: 600 }}
           >
             Quantis
           </Typography>
@@ -54,7 +54,7 @@ const Header = ({ toggleSidebar, sidebarOpen }) => {
 
         <Box sx={{ flexGrow: 1 }} />
 
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
           <IconButton color="inherit" sx={{ ml: 1 }}>
             <SearchIcon />
           </IconButton>

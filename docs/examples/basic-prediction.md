@@ -296,15 +296,15 @@ if __name__ == "__main__":
 
 ```javascript
 class QuantisPredictionClient {
-  constructor(baseURL = 'http://localhost:8000') {
+  constructor(baseURL = "http://localhost:8000") {
     this.baseURL = baseURL;
     this.token = null;
   }
 
   async login(username, password) {
     const response = await fetch(`${this.baseURL}/auth/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
     });
 
@@ -316,7 +316,7 @@ class QuantisPredictionClient {
   getHeaders() {
     return {
       Authorization: `Bearer ${this.token}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     };
   }
 
@@ -329,7 +329,7 @@ class QuantisPredictionClient {
 
   async predict(modelId, inputData) {
     const response = await fetch(`${this.baseURL}/predict`, {
-      method: 'POST',
+      method: "POST",
       headers: this.getHeaders(),
       body: JSON.stringify({ model_id: modelId, input_data: inputData }),
     });
@@ -338,7 +338,7 @@ class QuantisPredictionClient {
 
   async predictBatch(modelId, inputDataList) {
     const response = await fetch(`${this.baseURL}/predict/batch`, {
-      method: 'POST',
+      method: "POST",
       headers: this.getHeaders(),
       body: JSON.stringify({
         model_id: modelId,
@@ -354,8 +354,8 @@ class QuantisPredictionClient {
   const client = new QuantisPredictionClient();
 
   // Login
-  await client.login('demo_user', 'DemoPassword123!');
-  console.log('✓ Logged in');
+  await client.login("demo_user", "DemoPassword123!");
+  console.log("✓ Logged in");
 
   // List models
   const models = await client.listModels();
@@ -363,7 +363,7 @@ class QuantisPredictionClient {
 
   // Make prediction
   const prediction = await client.predict(models[0].id, [0.1, 0.2, 0.3]);
-  console.log('✓ Prediction:', prediction.prediction_result);
+  console.log("✓ Prediction:", prediction.prediction_result);
 })();
 ```
 

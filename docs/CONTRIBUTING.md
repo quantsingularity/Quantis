@@ -185,7 +185,7 @@ rolling_mean = df['price'].rolling(window=7).mean()
 
 // Good
 const fetchModels = async (): Promise<Model[]> => {
-  const response = await api.get('/models');
+  const response = await api.get("/models");
   return response.data;
 };
 

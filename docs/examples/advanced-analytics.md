@@ -382,7 +382,7 @@ if __name__ == "__main__":
 // Fetch and display real-time metrics
 async function updateDashboard() {
   // System stats
-  const sysStats = await fetch('/monitoring/stats', {
+  const sysStats = await fetch("/monitoring/stats", {
     headers: { Authorization: `Bearer ${token}` },
   }).then((r) => r.json());
 
@@ -393,7 +393,7 @@ async function updateDashboard() {
   });
 
   // Prediction stats
-  const predStats = await fetch('/predictions/stats', {
+  const predStats = await fetch("/predictions/stats", {
     headers: { Authorization: `Bearer ${token}` },
   }).then((r) => r.json());
 

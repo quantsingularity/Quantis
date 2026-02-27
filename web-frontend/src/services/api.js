@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 // API configuration
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
 const API_TIMEOUT = 30000; // 30 seconds
 
 // Create axios instance with default configuration
@@ -9,27 +9,27 @@ const apiClient = axios.create({
   baseURL: API_BASE_URL,
   timeout: API_TIMEOUT,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
 // Request interceptor to add authentication
 apiClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('authToken');
-    const apiKey = localStorage.getItem('apiKey');
+    const token = localStorage.getItem("authToken");
+    const apiKey = localStorage.getItem("apiKey");
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     } else if (apiKey) {
-      config.headers['X-API-Key'] = apiKey;
+      config.headers["X-API-Key"] = apiKey;
     }
 
     return config;
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 // Response interceptor to handle errors
@@ -40,39 +40,39 @@ apiClient.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       // Clear authentication and redirect to login
-      localStorage.removeItem('authToken');
-      localStorage.removeItem('apiKey');
-      localStorage.removeItem('user');
-      window.location.href = '/login';
+      localStorage.removeItem("authToken");
+      localStorage.removeItem("apiKey");
+      localStorage.removeItem("user");
+      window.location.href = "/login";
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 // Authentication API
 export const authAPI = {
   login: async (credentials) => {
-    const response = await apiClient.post('/auth/login', credentials);
+    const response = await apiClient.post("/auth/login", credentials);
     return response.data;
   },
 
   register: async (userData) => {
-    const response = await apiClient.post('/auth/register', userData);
+    const response = await apiClient.post("/auth/register", userData);
     return response.data;
   },
 
   logout: async () => {
-    const response = await apiClient.post('/auth/logout');
+    const response = await apiClient.post("/auth/logout");
     return response.data;
   },
 
   refreshToken: async () => {
-    const response = await apiClient.post('/auth/refresh');
+    const response = await apiClient.post("/auth/refresh");
     return response.data;
   },
 
   getCurrentUser: async () => {
-    const response = await apiClient.get('/auth/me');
+    const response = await apiClient.get("/auth/me");
     return response.data;
   },
 };
@@ -80,7 +80,7 @@ export const authAPI = {
 // Users API
 export const usersAPI = {
   getUsers: async (params = {}) => {
-    const response = await apiClient.get('/users', { params });
+    const response = await apiClient.get("/users", { params });
     return response.data;
   },
 
@@ -100,12 +100,12 @@ export const usersAPI = {
   },
 
   createApiKey: async (keyData) => {
-    const response = await apiClient.post('/users/api-keys', keyData);
+    const response = await apiClient.post("/users/api-keys", keyData);
     return response.data;
   },
 
   getApiKeys: async () => {
-    const response = await apiClient.get('/users/api-keys');
+    const response = await apiClient.get("/users/api-keys");
     return response.data;
   },
 
@@ -118,7 +118,7 @@ export const usersAPI = {
 // Datasets API
 export const datasetsAPI = {
   getDatasets: async (params = {}) => {
-    const response = await apiClient.get('/datasets', { params });
+    const response = await apiClient.get("/datasets", { params });
     return response.data;
   },
 
@@ -128,9 +128,9 @@ export const datasetsAPI = {
   },
 
   uploadDataset: async (formData, onUploadProgress) => {
-    const response = await apiClient.post('/datasets/upload', formData, {
+    const response = await apiClient.post("/datasets/upload", formData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        "Content-Type": "multipart/form-data",
       },
       onUploadProgress,
     });
@@ -158,7 +158,7 @@ export const datasetsAPI = {
 // Models API
 export const modelsAPI = {
   getModels: async (params = {}) => {
-    const response = await apiClient.get('/models', { params });
+    const response = await apiClient.get("/models", { params });
     return response.data;
   },
 
@@ -168,7 +168,7 @@ export const modelsAPI = {
   },
 
   createModel: async (modelData) => {
-    const response = await apiClient.post('/models', modelData);
+    const response = await apiClient.post("/models", modelData);
     return response.data;
   },
 
@@ -196,7 +196,7 @@ export const modelsAPI = {
 // Predictions API
 export const predictionsAPI = {
   getPredictions: async (params = {}) => {
-    const response = await apiClient.get('/predictions', { params });
+    const response = await apiClient.get("/predictions", { params });
     return response.data;
   },
 
@@ -206,17 +206,17 @@ export const predictionsAPI = {
   },
 
   createPrediction: async (predictionData) => {
-    const response = await apiClient.post('/predictions', predictionData);
+    const response = await apiClient.post("/predictions", predictionData);
     return response.data;
   },
 
   batchPredict: async (batchData) => {
-    const response = await apiClient.post('/predictions/batch', batchData);
+    const response = await apiClient.post("/predictions/batch", batchData);
     return response.data;
   },
 
   getPredictionStats: async (params = {}) => {
-    const response = await apiClient.get('/predictions/stats', { params });
+    const response = await apiClient.get("/predictions/stats", { params });
     return response.data;
   },
 };
@@ -224,27 +224,27 @@ export const predictionsAPI = {
 // Monitoring API
 export const monitoringAPI = {
   getHealthStatus: async () => {
-    const response = await apiClient.get('/health');
+    const response = await apiClient.get("/health");
     return response.data;
   },
 
   getMetrics: async () => {
-    const response = await apiClient.get('/metrics');
+    const response = await apiClient.get("/metrics");
     return response.data;
   },
 
   getSystemMetrics: async () => {
-    const response = await apiClient.get('/monitoring/system');
+    const response = await apiClient.get("/monitoring/system");
     return response.data;
   },
 
   getDatabaseMetrics: async () => {
-    const response = await apiClient.get('/monitoring/database');
+    const response = await apiClient.get("/monitoring/database");
     return response.data;
   },
 
   getPerformanceSummary: async (hours = 24) => {
-    const response = await apiClient.get('/monitoring/performance', {
+    const response = await apiClient.get("/monitoring/performance", {
       params: { hours },
     });
     return response.data;
@@ -254,19 +254,19 @@ export const monitoringAPI = {
 // Notifications API
 export const notificationsAPI = {
   getNotifications: async (params = {}) => {
-    const response = await apiClient.get('/notifications', { params });
+    const response = await apiClient.get("/notifications", { params });
     return response.data;
   },
 
   markAsRead: async (notificationId) => {
     const response = await apiClient.put(
-      `/notifications/${notificationId}/read`
+      `/notifications/${notificationId}/read`,
     );
     return response.data;
   },
 
   markAllAsRead: async () => {
-    const response = await apiClient.put('/notifications/read-all');
+    const response = await apiClient.put("/notifications/read-all");
     return response.data;
   },
 
@@ -276,7 +276,7 @@ export const notificationsAPI = {
   },
 
   getNotificationStats: async () => {
-    const response = await apiClient.get('/notifications/stats');
+    const response = await apiClient.get("/notifications/stats");
     return response.data;
   },
 };
@@ -288,21 +288,21 @@ export const handleApiError = (error) => {
     const { status, data } = error.response;
     return {
       status,
-      message: data.message || data.detail || 'An error occurred',
+      message: data.message || data.detail || "An error occurred",
       details: data.details || null,
     };
   } else if (error.request) {
     // Request was made but no response received
     return {
       status: 0,
-      message: 'Network error - please check your connection',
+      message: "Network error - please check your connection",
       details: null,
     };
   } else {
     // Something else happened
     return {
       status: 0,
-      message: error.message || 'An unexpected error occurred',
+      message: error.message || "An unexpected error occurred",
       details: null,
     };
   }
@@ -310,22 +310,22 @@ export const handleApiError = (error) => {
 
 // Utility functions
 export const setAuthToken = (token) => {
-  localStorage.setItem('authToken', token);
+  localStorage.setItem("authToken", token);
 };
 
 export const setApiKey = (apiKey) => {
-  localStorage.setItem('apiKey', apiKey);
+  localStorage.setItem("apiKey", apiKey);
 };
 
 export const clearAuth = () => {
-  localStorage.removeItem('authToken');
-  localStorage.removeItem('apiKey');
-  localStorage.removeItem('user');
+  localStorage.removeItem("authToken");
+  localStorage.removeItem("apiKey");
+  localStorage.removeItem("user");
 };
 
 export const isAuthenticated = () => {
   return !!(
-    localStorage.getItem('authToken') || localStorage.getItem('apiKey')
+    localStorage.getItem("authToken") || localStorage.getItem("apiKey")
   );
 };
 

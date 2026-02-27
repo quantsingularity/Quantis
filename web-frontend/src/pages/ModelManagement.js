@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Card,
@@ -29,7 +29,7 @@ import {
   Tooltip,
   LinearProgress,
   useTheme,
-} from '@mui/material';
+} from "@mui/material";
 import {
   Add,
   PlayArrow,
@@ -39,10 +39,10 @@ import {
   Edit,
   TrendingUp,
   DataUsage,
-} from '@mui/icons-material';
-import { modelsAPI, datasetsAPI, handleApiError } from '../services/api';
-import BarChart from '../components/charts/BarChart';
-import LineChart from '../components/charts/LineChart';
+} from "@mui/icons-material";
+import { modelsAPI, datasetsAPI, handleApiError } from "../services/api";
+import BarChart from "../components/charts/BarChart";
+import LineChart from "../components/charts/LineChart";
 
 const ModelManagement = () => {
   const theme = useTheme();
@@ -56,11 +56,11 @@ const ModelManagement = () => {
   const [trainingModels, setTrainingModels] = useState(new Set());
 
   const [newModel, setNewModel] = useState({
-    name: '',
-    description: '',
-    model_type: 'linear_regression',
-    dataset_id: '',
-    target_column: '',
+    name: "",
+    description: "",
+    model_type: "linear_regression",
+    dataset_id: "",
+    target_column: "",
     feature_columns: [],
     hyperparameters: {},
   });
@@ -92,11 +92,11 @@ const ModelManagement = () => {
       setModels((prev) => [...prev, response.data]);
       setCreateDialogOpen(false);
       setNewModel({
-        name: '',
-        description: '',
-        model_type: 'linear_regression',
-        dataset_id: '',
-        target_column: '',
+        name: "",
+        description: "",
+        model_type: "linear_regression",
+        dataset_id: "",
+        target_column: "",
         feature_columns: [],
         hyperparameters: {},
       });
@@ -125,7 +125,7 @@ const ModelManagement = () => {
   };
 
   const handleDeleteModel = async (modelId) => {
-    if (window.confirm('Are you sure you want to delete this model?')) {
+    if (window.confirm("Are you sure you want to delete this model?")) {
       try {
         await modelsAPI.deleteModel(modelId);
         setModels((prev) => prev.filter((model) => model.id !== modelId));
@@ -155,28 +155,28 @@ const ModelManagement = () => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'trained':
-        return 'success';
-      case 'training':
-        return 'warning';
-      case 'failed':
-        return 'error';
+      case "trained":
+        return "success";
+      case "training":
+        return "warning";
+      case "failed":
+        return "error";
       default:
-        return 'default';
+        return "default";
     }
   };
 
   const modelTypes = [
-    { value: 'linear_regression', label: 'Linear Regression' },
-    { value: 'random_forest', label: 'Random Forest' },
-    { value: 'lstm', label: 'LSTM Neural Network' },
-    { value: 'arima', label: 'ARIMA' },
-    { value: 'tft', label: 'Temporal Fusion Transformer' },
+    { value: "linear_regression", label: "Linear Regression" },
+    { value: "random_forest", label: "Random Forest" },
+    { value: "lstm", label: "LSTM Neural Network" },
+    { value: "arima", label: "ARIMA" },
+    { value: "tft", label: "Temporal Fusion Transformer" },
   ];
 
   if (loading) {
     return (
-      <Box sx={{ display: 'flex', justifyContent: 'center', p: 4 }}>
+      <Box sx={{ display: "flex", justifyContent: "center", p: 4 }}>
         <CircularProgress />
       </Box>
     );
@@ -186,9 +186,9 @@ const ModelManagement = () => {
     <Box sx={{ p: 3 }}>
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
           mb: 3,
         }}
       >
@@ -215,9 +215,9 @@ const ModelManagement = () => {
               <CardContent>
                 <Box
                   sx={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'flex-start',
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "flex-start",
                     mb: 2,
                   }}
                 >
@@ -236,7 +236,7 @@ const ModelManagement = () => {
                   color="text.secondary"
                   sx={{ mb: 2 }}
                 >
-                  {model.description || 'No description'}
+                  {model.description || "No description"}
                 </Typography>
 
                 <Box sx={{ mb: 2 }}>
@@ -249,7 +249,7 @@ const ModelManagement = () => {
                   </Typography>
                 </Box>
 
-                {model.status === 'training' && (
+                {model.status === "training" && (
                   <LinearProgress sx={{ mb: 2 }} />
                 )}
 
@@ -261,7 +261,7 @@ const ModelManagement = () => {
                   </Box>
                 )}
 
-                <Box sx={{ display: 'flex', gap: 1 }}>
+                <Box sx={{ display: "flex", gap: 1 }}>
                   <Tooltip title="View Details">
                     <IconButton
                       size="small"
@@ -271,7 +271,7 @@ const ModelManagement = () => {
                     </IconButton>
                   </Tooltip>
 
-                  {model.status === 'created' && (
+                  {model.status === "created" && (
                     <Tooltip title="Train Model">
                       <IconButton
                         size="small"
@@ -304,7 +304,7 @@ const ModelManagement = () => {
 
         {models.length === 0 && (
           <Grid item xs={12}>
-            <Paper sx={{ p: 4, textAlign: 'center' }}>
+            <Paper sx={{ p: 4, textAlign: "center" }}>
               <DataUsage
                 sx={{
                   fontSize: 64,
@@ -488,15 +488,15 @@ const ModelManagement = () => {
                       ([key, value]) => (
                         <Box key={key} sx={{ mb: 1 }}>
                           <Typography variant="body2" color="text.secondary">
-                            {key.replace(/_/g, ' ').toUpperCase()}
+                            {key.replace(/_/g, " ").toUpperCase()}
                           </Typography>
                           <Typography variant="body1">
-                            {typeof value === 'number'
+                            {typeof value === "number"
                               ? value.toFixed(4)
                               : value}
                           </Typography>
                         </Box>
-                      )
+                      ),
                     )}
                   </Paper>
                 </Grid>

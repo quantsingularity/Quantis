@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Card,
@@ -16,7 +16,7 @@ import {
   TextField,
   InputAdornment,
   useTheme,
-} from '@mui/material';
+} from "@mui/material";
 import {
   PlayArrow,
   Stop,
@@ -27,9 +27,9 @@ import {
   Search,
   Assessment,
   FilterList,
-} from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
-import { modelsAPI, handleApiError } from '../services/api';
+} from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import { modelsAPI, handleApiError } from "../services/api";
 
 const Models = () => {
   const theme = useTheme();
@@ -37,8 +37,8 @@ const Models = () => {
   const [models, setModels] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filterStatus, setFilterStatus] = useState('all');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterStatus, setFilterStatus] = useState("all");
 
   useEffect(() => {
     loadModels();
@@ -58,7 +58,7 @@ const Models = () => {
   };
 
   const handleDeleteModel = async (modelId) => {
-    if (window.confirm('Are you sure you want to delete this model?')) {
+    if (window.confirm("Are you sure you want to delete this model?")) {
       try {
         await modelsAPI.deleteModel(modelId);
         setModels((prev) => prev.filter((model) => model.id !== modelId));
@@ -75,14 +75,14 @@ const Models = () => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'trained':
-        return 'success';
-      case 'training':
-        return 'warning';
-      case 'failed':
-        return 'error';
+      case "trained":
+        return "success";
+      case "training":
+        return "warning";
+      case "failed":
+        return "error";
       default:
-        return 'default';
+        return "default";
     }
   };
 
@@ -91,13 +91,13 @@ const Models = () => {
       model.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       model.description?.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesFilter =
-      filterStatus === 'all' || model.status === filterStatus;
+      filterStatus === "all" || model.status === filterStatus;
     return matchesSearch && matchesFilter;
   });
 
   if (loading) {
     return (
-      <Box sx={{ display: 'flex', justifyContent: 'center', p: 4 }}>
+      <Box sx={{ display: "flex", justifyContent: "center", p: 4 }}>
         <CircularProgress />
       </Box>
     );
@@ -107,9 +107,9 @@ const Models = () => {
     <Box className="fade-in">
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
           mb: 3,
         }}
       >
@@ -123,7 +123,7 @@ const Models = () => {
         </Box>
         <Button
           variant="contained"
-          onClick={() => navigate('/model-management')}
+          onClick={() => navigate("/model-management")}
         >
           Create Model
         </Button>
@@ -154,30 +154,30 @@ const Models = () => {
               />
             </Grid>
             <Grid item xs={12} md={6}>
-              <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+              <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
                 <Chip
                   label="All"
-                  onClick={() => setFilterStatus('all')}
-                  color={filterStatus === 'all' ? 'primary' : 'default'}
-                  variant={filterStatus === 'all' ? 'filled' : 'outlined'}
+                  onClick={() => setFilterStatus("all")}
+                  color={filterStatus === "all" ? "primary" : "default"}
+                  variant={filterStatus === "all" ? "filled" : "outlined"}
                 />
                 <Chip
                   label="Trained"
-                  onClick={() => setFilterStatus('trained')}
-                  color={filterStatus === 'trained' ? 'success' : 'default'}
-                  variant={filterStatus === 'trained' ? 'filled' : 'outlined'}
+                  onClick={() => setFilterStatus("trained")}
+                  color={filterStatus === "trained" ? "success" : "default"}
+                  variant={filterStatus === "trained" ? "filled" : "outlined"}
                 />
                 <Chip
                   label="Training"
-                  onClick={() => setFilterStatus('training')}
-                  color={filterStatus === 'training' ? 'warning' : 'default'}
-                  variant={filterStatus === 'training' ? 'filled' : 'outlined'}
+                  onClick={() => setFilterStatus("training")}
+                  color={filterStatus === "training" ? "warning" : "default"}
+                  variant={filterStatus === "training" ? "filled" : "outlined"}
                 />
                 <Chip
                   label="Created"
-                  onClick={() => setFilterStatus('created')}
-                  color={filterStatus === 'created' ? 'info' : 'default'}
-                  variant={filterStatus === 'created' ? 'filled' : 'outlined'}
+                  onClick={() => setFilterStatus("created")}
+                  color={filterStatus === "created" ? "info" : "default"}
+                  variant={filterStatus === "created" ? "filled" : "outlined"}
                 />
               </Box>
             </Grid>
@@ -190,12 +190,12 @@ const Models = () => {
           <Grid item xs={12} sm={6} md={4} key={model.id}>
             <Card
               sx={{
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                transition: 'transform 0.2s, box-shadow 0.2s',
-                '&:hover': {
-                  transform: 'translateY(-4px)',
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                transition: "transform 0.2s, box-shadow 0.2s",
+                "&:hover": {
+                  transform: "translateY(-4px)",
                   boxShadow: theme.shadows[8],
                 },
               }}
@@ -203,9 +203,9 @@ const Models = () => {
               <CardContent sx={{ flexGrow: 1 }}>
                 <Box
                   sx={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'flex-start',
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "flex-start",
                     mb: 2,
                   }}
                 >
@@ -233,13 +233,13 @@ const Models = () => {
                   color="text.secondary"
                   sx={{
                     mb: 2,
-                    display: '-webkit-box',
+                    display: "-webkit-box",
                     WebkitLineClamp: 2,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden',
+                    WebkitBoxOrient: "vertical",
+                    overflow: "hidden",
                   }}
                 >
-                  {model.description || 'No description available'}
+                  {model.description || "No description available"}
                 </Typography>
 
                 <Box sx={{ mb: 2 }}>
@@ -248,7 +248,7 @@ const Models = () => {
                     color="text.secondary"
                     display="block"
                   >
-                    Type: {model.model_type?.replace(/_/g, ' ').toUpperCase()}
+                    Type: {model.model_type?.replace(/_/g, " ").toUpperCase()}
                   </Typography>
                   <Typography
                     variant="caption"
@@ -268,11 +268,11 @@ const Models = () => {
                   )}
                 </Box>
 
-                {model.status === 'training' && (
+                {model.status === "training" && (
                   <LinearProgress sx={{ mb: 2 }} />
                 )}
 
-                {model.metrics && model.status === 'trained' && (
+                {model.metrics && model.status === "trained" && (
                   <Paper
                     sx={{
                       p: 1.5,
@@ -291,15 +291,15 @@ const Models = () => {
                           variant="body2"
                           sx={{ fontWeight: 500 }}
                         >
-                          {key.replace(/_/g, ' ')}:{' '}
-                          {typeof value === 'number' ? value.toFixed(4) : value}
+                          {key.replace(/_/g, " ")}:{" "}
+                          {typeof value === "number" ? value.toFixed(4) : value}
                         </Typography>
                       ))}
                   </Paper>
                 )}
 
                 <Box
-                  sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end' }}
+                  sx={{ display: "flex", gap: 1, justifyContent: "flex-end" }}
                 >
                   <Tooltip title="View Details">
                     <IconButton
@@ -326,7 +326,7 @@ const Models = () => {
 
         {filteredModels.length === 0 && (
           <Grid item xs={12}>
-            <Paper sx={{ p: 6, textAlign: 'center' }}>
+            <Paper sx={{ p: 6, textAlign: "center" }}>
               <DataUsage
                 sx={{
                   fontSize: 80,
@@ -335,19 +335,19 @@ const Models = () => {
                 }}
               />
               <Typography variant="h5" gutterBottom>
-                {searchTerm || filterStatus !== 'all'
-                  ? 'No Models Found'
-                  : 'No Models Yet'}
+                {searchTerm || filterStatus !== "all"
+                  ? "No Models Found"
+                  : "No Models Yet"}
               </Typography>
               <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-                {searchTerm || filterStatus !== 'all'
-                  ? 'Try adjusting your search or filter criteria'
-                  : 'Create your first machine learning model to get started'}
+                {searchTerm || filterStatus !== "all"
+                  ? "Try adjusting your search or filter criteria"
+                  : "Create your first machine learning model to get started"}
               </Typography>
-              {!searchTerm && filterStatus === 'all' && (
+              {!searchTerm && filterStatus === "all" && (
                 <Button
                   variant="contained"
-                  onClick={() => navigate('/model-management')}
+                  onClick={() => navigate("/model-management")}
                 >
                   Create Model
                 </Button>

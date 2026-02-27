@@ -29,12 +29,12 @@ spec:
               memory: 256Mi
           livenessProbe:
             exec:
-              command: ['redis-cli', 'ping']
+              command: ["redis-cli", "ping"]
             initialDelaySeconds: 30
             periodSeconds: 10
           readinessProbe:
             exec:
-              command: ['redis-cli', 'ping']
+              command: ["redis-cli", "ping"]
             initialDelaySeconds: 5
             periodSeconds: 5
           volumeMounts:

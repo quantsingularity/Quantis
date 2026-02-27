@@ -1,7 +1,7 @@
-import React from 'react';
-import { Box, Typography, Button, useTheme } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import React from "react";
+import { Box, Typography, Button, useTheme } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 const NotFound = () => {
   const theme = useTheme();
@@ -9,14 +9,14 @@ const NotFound = () => {
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        textAlign: 'center',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
         py: 8,
         px: 2,
-        height: '80vh',
+        height: "80vh",
       }}
       className="fade-in"
     >

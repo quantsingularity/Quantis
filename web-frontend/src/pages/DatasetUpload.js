@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback } from "react";
 import {
   Box,
   Card,
@@ -18,17 +18,17 @@ import {
   TableHead,
   TableRow,
   useTheme,
-} from '@mui/material';
-import { CloudUpload, Description, CheckCircle } from '@mui/icons-material';
-import { useDropzone } from 'react-dropzone';
-import { datasetsAPI, handleApiError } from '../services/api';
+} from "@mui/material";
+import { CloudUpload, Description, CheckCircle } from "@mui/icons-material";
+import { useDropzone } from "react-dropzone";
+import { datasetsAPI, handleApiError } from "../services/api";
 
 const DatasetUpload = () => {
   const theme = useTheme();
   const [uploadState, setUploadState] = useState({
     file: null,
-    name: '',
-    description: '',
+    name: "",
+    description: "",
     isUploading: false,
     uploadProgress: 0,
     error: null,
@@ -41,7 +41,7 @@ const DatasetUpload = () => {
     if (rejectedFiles.length > 0) {
       setUploadState((prev) => ({
         ...prev,
-        error: 'Invalid file type. Please upload CSV, JSON, or Excel files.',
+        error: "Invalid file type. Please upload CSV, JSON, or Excel files.",
       }));
       return;
     }
@@ -51,7 +51,7 @@ const DatasetUpload = () => {
       setUploadState((prev) => ({
         ...prev,
         file,
-        name: file.name.replace(/\.[^/.]+$/, ''), // Remove extension
+        name: file.name.replace(/\.[^/.]+$/, ""), // Remove extension
         error: null,
         success: false,
       }));
@@ -61,11 +61,11 @@ const DatasetUpload = () => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
-      'text/csv': ['.csv'],
-      'application/json': ['.json'],
-      'application/vnd.ms-excel': ['.xls'],
-      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': [
-        '.xlsx',
+      "text/csv": [".csv"],
+      "application/json": [".json"],
+      "application/vnd.ms-excel": [".xls"],
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": [
+        ".xlsx",
       ],
     },
     multiple: false,
@@ -76,7 +76,7 @@ const DatasetUpload = () => {
     if (!uploadState.file || !uploadState.name.trim()) {
       setUploadState((prev) => ({
         ...prev,
-        error: 'Please select a file and provide a name.',
+        error: "Please select a file and provide a name.",
       }));
       return;
     }
@@ -90,21 +90,21 @@ const DatasetUpload = () => {
 
     try {
       const formData = new FormData();
-      formData.append('file', uploadState.file);
-      formData.append('name', uploadState.name);
-      formData.append('description', uploadState.description);
+      formData.append("file", uploadState.file);
+      formData.append("name", uploadState.name);
+      formData.append("description", uploadState.description);
 
       const response = await datasetsAPI.uploadDataset(
         formData,
         (progressEvent) => {
           const progress = Math.round(
-            (progressEvent.loaded * 100) / progressEvent.total
+            (progressEvent.loaded * 100) / progressEvent.total,
           );
           setUploadState((prev) => ({
             ...prev,
             uploadProgress: progress,
           }));
-        }
+        },
       );
 
       // Get preview of uploaded dataset
@@ -130,8 +130,8 @@ const DatasetUpload = () => {
   const handleReset = () => {
     setUploadState({
       file: null,
-      name: '',
-      description: '',
+      name: "",
+      description: "",
       isUploading: false,
       uploadProgress: 0,
       error: null,
@@ -142,11 +142,11 @@ const DatasetUpload = () => {
   };
 
   const formatFileSize = (bytes) => {
-    if (bytes === 0) return '0 Bytes';
+    if (bytes === 0) return "0 Bytes";
     const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const sizes = ["Bytes", "KB", "MB", "GB"];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
   };
 
   if (uploadState.success && uploadState.uploadedDataset) {
@@ -154,7 +154,7 @@ const DatasetUpload = () => {
       <Box sx={{ p: 3 }}>
         <Card>
           <CardContent>
-            <Box sx={{ textAlign: 'center', mb: 3 }}>
+            <Box sx={{ textAlign: "center", mb: 3 }}>
               <CheckCircle
                 sx={{ fontSize: 64, color: theme.palette.success.main, mb: 2 }}
               />
@@ -213,7 +213,7 @@ const DatasetUpload = () => {
                   <Typography variant="h6" gutterBottom>
                     Column Types
                   </Typography>
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
                     {uploadState.uploadedDataset.metadata?.numeric_columns?.map(
                       (col) => (
                         <Chip
@@ -223,7 +223,7 @@ const DatasetUpload = () => {
                           color="primary"
                           variant="outlined"
                         />
-                      )
+                      ),
                     )}
                     {uploadState.uploadedDataset.metadata?.categorical_columns?.map(
                       (col) => (
@@ -234,7 +234,7 @@ const DatasetUpload = () => {
                           color="secondary"
                           variant="outlined"
                         />
-                      )
+                      ),
                     )}
                   </Box>
                 </Paper>
@@ -260,7 +260,7 @@ const DatasetUpload = () => {
                             <TableRow key={index}>
                               {uploadState.preview.columns.map((column) => (
                                 <TableCell key={column}>
-                                  {row[column]?.toString() || ''}
+                                  {row[column]?.toString() || ""}
                                 </TableCell>
                               ))}
                             </TableRow>
@@ -273,7 +273,7 @@ const DatasetUpload = () => {
               )}
             </Grid>
 
-            <Box sx={{ mt: 3, textAlign: 'center' }}>
+            <Box sx={{ mt: 3, textAlign: "center" }}>
               <Button variant="contained" onClick={handleReset} sx={{ mr: 2 }}>
                 Upload Another Dataset
               </Button>
@@ -315,12 +315,12 @@ const DatasetUpload = () => {
               }`,
               borderRadius: 2,
               p: 4,
-              textAlign: 'center',
-              cursor: 'pointer',
+              textAlign: "center",
+              cursor: "pointer",
               backgroundColor: isDragActive
                 ? theme.palette.action.hover
-                : 'transparent',
-              transition: 'all 0.2s ease-in-out',
+                : "transparent",
+              transition: "all 0.2s ease-in-out",
               mb: 3,
             }}
           >
@@ -334,8 +334,8 @@ const DatasetUpload = () => {
             />
             <Typography variant="h6" gutterBottom>
               {isDragActive
-                ? 'Drop the file here'
-                : 'Drag & drop a file here, or click to select'}
+                ? "Drop the file here"
+                : "Drag & drop a file here, or click to select"}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               Maximum file size: 10MB
@@ -350,7 +350,7 @@ const DatasetUpload = () => {
                 backgroundColor: theme.palette.background.default,
               }}
             >
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+              <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                 <Description
                   sx={{ mr: 1, color: theme.palette.text.secondary }}
                 />
@@ -405,7 +405,7 @@ const DatasetUpload = () => {
             </Box>
           )}
 
-          <Box sx={{ textAlign: 'center' }}>
+          <Box sx={{ textAlign: "center" }}>
             <Button
               variant="contained"
               onClick={handleUpload}
@@ -416,7 +416,7 @@ const DatasetUpload = () => {
               }
               size="large"
             >
-              {uploadState.isUploading ? 'Uploading...' : 'Upload Dataset'}
+              {uploadState.isUploading ? "Uploading..." : "Upload Dataset"}
             </Button>
           </Box>
         </CardContent>

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import {
   Box,
   Card,
@@ -16,59 +16,59 @@ import {
   Select,
   MenuItem,
   useTheme,
-} from '@mui/material';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import { useAuth } from '../context/AuthContext';
+} from "@mui/material";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { useAuth } from "../context/AuthContext";
 
 const validationSchema = Yup.object({
   username: Yup.string()
-    .min(3, 'Username must be at least 3 characters')
-    .max(50, 'Username must be less than 50 characters')
-    .required('Username is required'),
+    .min(3, "Username must be at least 3 characters")
+    .max(50, "Username must be less than 50 characters")
+    .required("Username is required"),
   email: Yup.string()
-    .email('Invalid email address')
-    .required('Email is required'),
+    .email("Invalid email address")
+    .required("Email is required"),
   password: Yup.string()
-    .min(8, 'Password must be at least 8 characters')
+    .min(8, "Password must be at least 8 characters")
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-      'Password must contain at least one uppercase letter, one lowercase letter, and one number'
+      "Password must contain at least one uppercase letter, one lowercase letter, and one number",
     )
-    .required('Password is required'),
+    .required("Password is required"),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password'), null], 'Passwords must match')
-    .required('Please confirm your password'),
+    .oneOf([Yup.ref("password"), null], "Passwords must match")
+    .required("Please confirm your password"),
   role: Yup.string()
-    .oneOf(['user', 'readonly'], 'Invalid role')
-    .required('Role is required'),
+    .oneOf(["user", "readonly"], "Invalid role")
+    .required("Role is required"),
 });
 
 const Register = () => {
   const theme = useTheme();
   const navigate = useNavigate();
   const { register } = useAuth();
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-      role: 'user',
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      role: "user",
     },
     validationSchema,
     onSubmit: async (values) => {
       setIsLoading(true);
-      setError('');
+      setError("");
 
       const { confirmPassword, ...registerData } = values;
       const result = await register(registerData);
 
       if (result.success) {
-        navigate('/');
+        navigate("/");
       } else {
         setError(result.error);
       }
@@ -81,16 +81,16 @@ const Register = () => {
     <Container maxWidth="sm">
       <Box
         sx={{
-          minHeight: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
           py: 4,
         }}
       >
-        <Card sx={{ width: '100%', maxWidth: 450 }}>
+        <Card sx={{ width: "100%", maxWidth: 450 }}>
           <CardContent sx={{ p: 4 }}>
-            <Box sx={{ textAlign: 'center', mb: 4 }}>
+            <Box sx={{ textAlign: "center", mb: 4 }}>
               <Typography
                 variant="h4"
                 component="h1"
@@ -217,7 +217,7 @@ const Register = () => {
                 {isLoading ? (
                   <CircularProgress size={24} color="inherit" />
                 ) : (
-                  'Create Account'
+                  "Create Account"
                 )}
               </Button>
 
@@ -227,14 +227,14 @@ const Register = () => {
                 </Typography>
               </Divider>
 
-              <Box sx={{ textAlign: 'center' }}>
+              <Box sx={{ textAlign: "center" }}>
                 <Typography variant="body2" color="text.secondary">
-                  Already have an account?{' '}
+                  Already have an account?{" "}
                   <Link
                     to="/login"
                     style={{
                       color: theme.palette.primary.main,
-                      textDecoration: 'none',
+                      textDecoration: "none",
                       fontWeight: 500,
                     }}
                   >
